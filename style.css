@@ -1,3 +1,15 @@
+.title-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}
+
+.intro-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
 /* TITLE SCREEN FADE */
 .title-screen {
     position: absolute;
