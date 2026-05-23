@@ -71,9 +71,6 @@ const rightChoiceLines = [
     "You're second-guessing yourself.",
 ];
 
-const upChoiceLines = [
-];
-
 /* =========================
    SCENE 3
 ========================= */
@@ -128,16 +125,72 @@ const scene4Lines = [
 ========================= */
 
 const scene5Lines = [
-
     "Your bedsheets aren't put on right. Your pillowcase was starting to tinge yellow, so you took it off.",
     "It's gonna take a while for you to get to sleep, regardless. There are tablets you can take, but you tried one not long ago and it didn't do what it was meant to -- you were still awake except you couldn't move.",
     "It'd be too expensive to get the type of thing you need. You'll look up what else you can do to...",
     "Fuck.",
     "You don't have your phone on you.",
-    "Where'd you have it last? in the...",
+    "Where'd you have it last? In the...",
     "In Carlton Gardens.[pause]",
-
 ];
+
+/* =========================
+   BEDROOM CHOICES
+========================= */
+
+const showerLines = [
+    "It's been ages since you had a shower. That only occurs to you 'cause mould's started growing in the corners and in the grit.",
+    "The water keeps coming out cold. You ease each limb under so they at least get wet.",
+    "For a moment, there's another naked body in the bathroom with you. When you cringe away from it, it does the same. Turns out it's yours -- in the mirror.",
+    "You wrap yourself in a towel and stand at the sink for a while, staring down the drain.",
+];
+
+const watchLines = [
+    "You've seen every epsiode of Married at First Sight there is. You count how many there are and realise how many hours that adds up to.",
+    "It'd be too difficult to get into anything you haven't already seen, so you put on the most recent season.",
+    "You forgot how actually romantic some of the couples are.",
+];
+
+const bedLines = [
+    "Thankfully, you're finally drunk enough to feel like you can get to sleep.",
+];
+
+/* =========================
+   SCENE 6
+========================= */
+
+const nextMorningLines = [
+    "You wake up. There's nothing to do.",
+    "...",
+    "[pause]It's dark again. As much as you'd rather not, you do need your phone.",
+    "You can't afford a new one. They told you not to come into work anymore. It might still be in Carlton Gardens, at that tree you were at.",
+    "It's worth checking. What else are you gonna do?",
+];
+
+/* =========================
+   MORNING CHOICES
+========================= */
+
+const messageHimLines = [
+    "You don't have your phone, yeah, but you can still log in to Instagram on your laptop.",
+    "In your chat with him, the DMs are pretty one-sided, but that's surely only 'cause he's waiting on you to say the right thing.",
+    "You type 'I miss you' and send it.",
+    "You wait an hour or so, and nothing changes.",
+];
+
+const goOutLines = [
+    "You get on with it.",
+];
+
+const morningLoopLines = [
+    "You're still really tired.",
+];
+
+
+const yourNextSceneLines = [
+    "It would've been weird going to the Gardens without more wine.",
+];
+
 
 /* =========================
    STATE
@@ -150,6 +203,14 @@ let isTyping = false;
 
 let lookedLeft = false;
 let lookedRight = false;
+
+let showerDone = false;
+let watchDone = false;
+
+let messagedHim = false;
+
+let bedroomChoiceActive = false;
+let morningChoiceActive = false;
 
 let typingTimeout;
 
@@ -185,10 +246,60 @@ titleScreen.addEventListener("transitionend", () => {
 });
 
 /* =========================
+   FINISH LINE EVENTS
+========================= */
+
+function handleLineFinish() {
+
+    isTyping = false;
+
+    if (
+        currentScene === 1 &&
+        currentLine === lines.length - 1
+    ) {
+
+        startNextScene();
+        return;
+    }
+
+    if (
+        currentScene === 2 &&
+        currentLine === nextSceneLines.length - 1
+    ) {
+
+        setTimeout(() => {
+
+            showChoices();
+
+        }, 800);
+
+        return;
+    }
+
+    if (
+        currentScene === 3 &&
+        currentLine === scene3Lines.length - 1
+    ) {
+
+        setTimeout(() => {
+
+            showDialogueChoices();
+
+        }, 800);
+
+        return;
+    }
+
+    nextIndicator.classList.add("show");
+}
+
+/* =========================
    TYPEWRITER
 ========================= */
 
 function typeLine(text) {
+
+    clearTimeout(typingTimeout);
 
     const isPossumDialogue = text.startsWith("[possum]");
 
@@ -207,67 +318,13 @@ function typeLine(text) {
 
     function typeCharacter() {
 
+        if (!isTyping) {
+            return;
+        }
+
         if (index >= text.length) {
 
-            isTyping = false;
-
-            if (
-                currentScene === 1 &&
-                currentLine === lines.length - 1
-            ) {
-
-                startNextScene();
-
-                return;
-            }
-
-            if (
-                currentScene === 2 &&
-                currentLine === nextSceneLines.length - 1
-            ) {
-
-                setTimeout(() => {
-
-                    showChoices();
-
-                }, 800);
-
-                return;
-            }
-
-            if (
-                currentScene === 2 &&
-                (
-                    leftChoiceLines.includes(text) ||
-                    rightChoiceLines.includes(text)
-                )
-            ) {
-
-                setTimeout(() => {
-
-                    showChoices();
-
-                }, 500);
-
-                return;
-            }
-
-            if (
-                currentScene === 3 &&
-                currentLine === scene3Lines.length - 1
-            ) {
-
-                setTimeout(() => {
-
-                    showDialogueChoices();
-
-                }, 800);
-
-                return;
-            }
-
-            nextIndicator.classList.add("show");
-
+            handleLineFinish();
             return;
         }
 
@@ -303,13 +360,6 @@ function typeLine(text) {
         let delay = 55;
 
         const nextChar = text[index];
-
-        const recentText = dialogue.textContent.toLowerCase();
-
-        if (recentText.endsWith("boyfriend")) {
-
-            delay = 140;
-        }
 
         if (
             currentChar === "\"" &&
@@ -455,15 +505,105 @@ function hideDialogueChoices() {
 }
 
 /* =========================
+   BEDROOM CHOICES
+========================= */
+
+function showBedroomChoices() {
+
+    bedroomChoiceActive = true;
+
+    leftChoice.textContent = "have a shower";
+    rightChoice.textContent = "watch something";
+    upChoice.textContent = "go to bed";
+
+    if (!showerDone) {
+        leftChoice.classList.add("show");
+    }
+
+    if (!watchDone) {
+        rightChoice.classList.add("show");
+    }
+
+    upChoice.classList.add("show");
+}
+
+function hideBedroomChoices() {
+
+    leftChoice.classList.remove("show");
+    rightChoice.classList.remove("show");
+    upChoice.classList.remove("show");
+}
+
+/* =========================
+   MORNING CHOICES
+========================= */
+
+function showMorningChoices() {
+
+    morningChoiceActive = true;
+
+    leftChoice.textContent = "message him";
+    rightChoice.textContent = "go out";
+    upChoice.textContent = "go to bed";
+
+    if (!messagedHim) {
+        leftChoice.classList.add("show");
+    }
+
+    rightChoice.classList.add("show");
+    upChoice.classList.add("show");
+}
+
+function hideMorningChoices() {
+
+    leftChoice.classList.remove("show");
+    rightChoice.classList.remove("show");
+    upChoice.classList.remove("show");
+}
+
+/* =========================
+   LOOK LEFT
+========================= */
+
+/* =========================
    LOOK LEFT
 ========================= */
 
 leftChoice.addEventListener("click", () => {
 
+    if (morningChoiceActive) {
+
+        messagedHim = true;
+
+        hideMorningChoices();
+
+        currentScene = 12;
+        currentLine = 0;
+
+        typeLine(messageHimLines[currentLine]);
+
+        return;
+    }
+
+    if (bedroomChoiceActive) {
+
+        showerDone = true;
+
+        hideBedroomChoices();
+
+        currentScene = 8;
+        currentLine = 0;
+
+        typeLine(showerLines[currentLine]);
+
+        return;
+    }
+
     lookedLeft = true;
 
     hideChoices();
 
+    currentScene = 15; // NEW TEMP SCENE
     currentLine = 0;
 
     typeLine(leftChoiceLines[currentLine]);
@@ -475,10 +615,39 @@ leftChoice.addEventListener("click", () => {
 
 rightChoice.addEventListener("click", () => {
 
+    if (morningChoiceActive) {
+
+        morningChoiceActive = false;
+
+        hideMorningChoices();
+
+        currentScene = 13;
+        currentLine = 0;
+
+        typeLine(goOutLines[currentLine]);
+
+        return;
+    }
+
+    if (bedroomChoiceActive) {
+
+        watchDone = true;
+
+        hideBedroomChoices();
+
+        currentScene = 9;
+        currentLine = 0;
+
+        typeLine(watchLines[currentLine]);
+
+        return;
+    }
+
     lookedRight = true;
 
     hideChoices();
 
+    currentScene = 16; // NEW TEMP SCENE
     currentLine = 0;
 
     typeLine(rightChoiceLines[currentLine]);
@@ -489,6 +658,32 @@ rightChoice.addEventListener("click", () => {
 ========================= */
 
 upChoice.addEventListener("click", () => {
+
+    if (morningChoiceActive) {
+
+        hideMorningChoices();
+
+        currentScene = 14;
+        currentLine = 0;
+
+        typeLine(morningLoopLines[currentLine]);
+
+        return;
+    }
+
+    if (bedroomChoiceActive) {
+
+        bedroomChoiceActive = false;
+
+        hideBedroomChoices();
+
+        currentScene = 10;
+        currentLine = 0;
+
+        typeLine(bedLines[currentLine]);
+
+        return;
+    }
 
     hideChoices();
 
@@ -542,85 +737,74 @@ textbox.addEventListener("click", () => {
         let fullText = "";
 
         if (currentScene === 1) {
-
             fullText = lines[currentLine];
         }
 
         else if (currentScene === 2) {
-
             fullText = nextSceneLines[currentLine];
         }
 
         else if (currentScene === 3) {
-
             fullText = scene3Lines[currentLine];
         }
 
         else if (currentScene === 4) {
-
             fullText = answerLines[currentLine];
         }
 
         else if (currentScene === 5) {
-
             fullText = dontAnswerLines[currentLine];
         }
 
         else if (currentScene === 6) {
-
             fullText = scene4Lines[currentLine];
         }
 
         else if (currentScene === 7) {
-
             fullText = scene5Lines[currentLine];
+        }
+
+        else if (currentScene === 8) {
+            fullText = showerLines[currentLine];
+        }
+
+        else if (currentScene === 9) {
+            fullText = watchLines[currentLine];
+        }
+
+        else if (currentScene === 10) {
+            fullText = bedLines[currentLine];
+        }
+
+        else if (currentScene === 11) {
+            fullText = nextMorningLines[currentLine];
+        }
+
+        else if (currentScene === 12) {
+            fullText = messageHimLines[currentLine];
+        }
+
+        else if (currentScene === 13) {
+            fullText = goOutLines[currentLine];
+        }
+
+        else if (currentScene === 14) {
+            fullText = morningLoopLines[currentLine];
+        }
+
+        else if (currentScene === 15) {
+            fullText = leftChoiceLines[currentLine];
+        }
+
+        else if (currentScene === 16) {
+            fullText = rightChoiceLines[currentLine];
         }
 
         dialogue.textContent = fullText
             .replace("[possum]", "")
             .replace(/\[pause\]/g, "");
 
-        isTyping = false;
-
-        if (
-            currentScene === 1 &&
-            currentLine === lines.length - 1
-        ) {
-
-            startNextScene();
-
-            return;
-        }
-
-        if (
-            currentScene === 2 &&
-            currentLine === nextSceneLines.length - 1
-        ) {
-
-            setTimeout(() => {
-
-                showChoices();
-
-            }, 800);
-
-            return;
-        }
-
-        if (
-            currentScene === 3 &&
-            currentLine === scene3Lines.length - 1
-        ) {
-
-            setTimeout(() => {
-
-                showDialogueChoices();
-
-            }, 800);
-
-            return;
-        }
-
-        nextIndicator.classList.add("show");
+        handleLineFinish();
 
         return;
     }
@@ -707,9 +891,137 @@ textbox.addEventListener("click", () => {
 
         } else {
 
-            nextIndicator.classList.remove("show");
-
-            dialogue.textContent = "";
+            showBedroomChoices();
         }
     }
+
+    else if (currentScene === 8) {
+
+        currentLine++;
+
+        if (currentLine < showerLines.length) {
+
+            typeLine(showerLines[currentLine]);
+
+        } else {
+
+            showBedroomChoices();
+        }
+    }
+
+    else if (currentScene === 9) {
+
+        currentLine++;
+
+        if (currentLine < watchLines.length) {
+
+            typeLine(watchLines[currentLine]);
+
+        } else {
+
+            showBedroomChoices();
+        }
+    }
+
+    else if (currentScene === 10) {
+
+        currentLine++;
+
+        if (currentLine < bedLines.length) {
+
+            typeLine(bedLines[currentLine]);
+
+        } else {
+
+            startScene(11, nextMorningLines);
+        }
+    }
+
+    else if (currentScene === 11) {
+
+        currentLine++;
+
+        if (currentLine < nextMorningLines.length) {
+
+            typeLine(nextMorningLines[currentLine]);
+
+        } else {
+
+            showMorningChoices();
+        }
+    }
+
+    else if (currentScene === 12) {
+
+        currentLine++;
+
+        if (currentLine < messageHimLines.length) {
+
+            typeLine(messageHimLines[currentLine]);
+
+        } else {
+
+            showMorningChoices();
+        }
+    }
+
+    /* =========================
+   GO OUT
+========================= */
+
+else if (currentScene === 13) {
+
+    currentLine++;
+
+    if (currentLine < goOutLines.length) {
+
+        typeLine(goOutLines[currentLine]);
+
+    } else {
+
+        startScene(17, yourNextSceneLines);
+    }
+}
+
+    else if (currentScene === 14) {
+
+        currentLine++;
+
+        if (currentLine < morningLoopLines.length) {
+
+            typeLine(morningLoopLines[currentLine]);
+
+        } else {
+
+            startScene(11, nextMorningLines);
+        }
+    }
+
+    else if (currentScene === 15) {
+
+    currentLine++;
+
+    if (currentLine < leftChoiceLines.length) {
+
+        typeLine(leftChoiceLines[currentLine]);
+
+    } else {
+
+        showChoices();
+    }
+}
+
+    else if (currentScene === 16) {
+
+    currentLine++;
+
+    if (currentLine < rightChoiceLines.length) {
+
+        typeLine(rightChoiceLines[currentLine]);
+
+    } else {
+
+        showChoices();
+    }
+}
 });
