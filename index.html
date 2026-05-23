@@ -1,36 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>The Carlton Gardens Possum Man</title>
 
+    <!-- PIXEL FONT -->
+
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+    >
+
+    <!-- CSS -->
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-    <!-- TITLE SCREEN -->
+    <!-- =========================
+         TITLE SCREEN
+    ========================== -->
+
     <div class="title-screen" id="titleScreen">
-        <h1 class="main-title">The Carlton Gardens Possum Man</h1>
-        <p class="subtitle">by Ben Muster</p>
-        <p class="click-start">click anywhere to begin</p>
+
+        <h1 class="main-title">
+            The Carlton Gardens Possum Man
+        </h1>
+
+        <p class="subtitle">
+            by Ben Muster
+        </p>
+
+        <p class="click-start">
+            click anywhere to begin
+        </p>
+
     </div>
 
-    <!-- INTRO SCREEN -->
+    <!-- =========================
+         INTRO SCREEN
+    ========================== -->
+
     <div class="intro-screen" id="introScreen">
 
+        <!-- =========================
+             TEXTBOX
+        ========================== -->
+
         <div class="textbox" id="textbox">
+
             <p id="dialogue"></p>
 
             <div class="next-indicator" id="nextIndicator">
                 ▼
             </div>
+
+        </div>
+
+        <!-- =========================
+             EXPLORATION CHOICES
+        ========================== -->
+
+        <div class="choice-container" id="choiceContainer">
+
+            <div class="choice-box left-choice" id="leftChoice">
+                look left
+            </div>
+
+            <div class="choice-box right-choice" id="rightChoice">
+                look right
+            </div>
+
+            <div class="choice-box up-choice" id="upChoice">
+                look up
+            </div>
+
+        </div>
+
+        <!-- =========================
+             DIALOGUE CHOICES
+        ========================== -->
+
+        <div class="dialogue-choice answer-choice" id="answerChoice">
+            answer him
+        </div>
+
+        <div class="dialogue-choice dont-answer-choice" id="dontAnswerChoice">
+            don't answer him
         </div>
 
     </div>
 
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
