@@ -1019,7 +1019,7 @@ dialogue.textContent = fullText
 handleLineFinish();
 
 return;
-}
+    }
 
 if (currentScene === 1) {
 
@@ -1395,6 +1395,8 @@ else if (currentScene === 26) {
         showPossumRoomChoices();
     }
 }
+
+});
 
 /* =========================
    ELEMENTS
@@ -2555,7 +2557,6 @@ else if (currentScene === 25) {
 else if (currentScene === 26) {
     fullText = roomLines[currentLine];
 }
-}
 
 dialogue.textContent = fullText
     .replace("[possum]", "")
@@ -2564,6 +2565,7 @@ dialogue.textContent = fullText
 handleLineFinish();
 
 return;
+    }
 
 if (currentScene === 1) {
 
