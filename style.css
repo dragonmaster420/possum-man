@@ -64,40 +64,27 @@ body {
 ========================= */
 
 .main-title {
-    font-family: 'VT323', monospace;
+    font-family: 'IBM Plex Mono', monospace;
 
-    font-size: 3.2rem;
+    font-size: 3.8rem;
 
-    line-height: 1.1;
+    font-weight: 300;
 
-    text-align: center;
+    letter-spacing: -10px;
 
-    max-width: 900px;
-
-    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .subtitle {
-    margin-top: 16px;
+    margin-top: 24px;
 
     font-family: 'VT323', monospace;
 
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 
-    letter-spacing: 0.5px;
+    opacity: 0.75;
 }
 
-.click-start {
-    margin-top: 34px;
-
-    font-family: 'VT323', monospace;
-
-    font-size: 1.15rem;
-
-    opacity: 0.7;
-
-    letter-spacing: 0.5px;
-}
 
 /* =========================
    TEXTBOX
