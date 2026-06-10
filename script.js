@@ -14,7 +14,6 @@ const upChoice = document.getElementById("upChoice");
 const answerChoice = document.getElementById("answerChoice");
 const dontAnswerChoice = document.getElementById("dontAnswerChoice");
 
-
 const typingSound = new Audio("audio/typing-1.mp3");
 typingSound.volume = 0.25;
 
@@ -69,7 +68,7 @@ const dontAnswerLines = [
 ];
 
 const scene4Lines = [
-    "[pause]\"You're... you're a possum?\"",
+    "[pause]\"You're... you're a possum?\"[bg=6 jump]",
     "[possum]\"Of course I am.\"",
     "Every now and then, he'll reposition his hands along the branch he's on, but he doesn't take his eyes off you.",
     "[possum]\"What are you doing here?\"",
@@ -86,12 +85,13 @@ const scene4Lines = [
     "[possum]\"Will you be back soon?\"",
     "...",
     "\"Uh, I dunno. Maybe.\"",
-    "The possum nods. He's still nodding as he climbs further up the tree, out of sight.",
-    "Carlton Gardens sways, and you almost lose your balance, but you find the path out. Your bottle is drained, now. You drop it into a bin and it clinks against all the others in there.",
+    "The possum nods. He's still nodding as he climbs further up the tree, out of sight.[bg=7 jump]",
+    "Carlton Gardens sways, and you almost lose your balance, but you find the path out. Your bottle is drained, now. You drop it into a bin and it clinks against all the others in there.[bg=8 jump]",
+    "[transition]"
 ];
 
 const scene5Lines = [
-    "Your bedsheets aren't put on right. Your pillowcase was starting to tinge yellow, so you took it off.",
+    "Your bedsheets aren't put on right. Your pillowcase was starting to tinge yellow, so you took it off.[bg=9 jump]",
     "It's gonna take a while for you to get to sleep, regardless. There are tablets you can take, but you tried one not long ago and it didn't do what it was meant to -- you were still awake except you couldn't move.",
     "It'd be too expensive to get the type of thing you need. You'll look up what else you can do to...",
     "Fuck.",
@@ -101,52 +101,55 @@ const scene5Lines = [
 ];
 
 const showerLines = [
-    "It's been ages since you had a shower. That only occurs to you 'cause mould's started growing in the corners and in the grit.",
+    "It's been ages since you had a shower. That only occurs to you 'cause mould's started growing in the corners and in the grit.[bg=10 jump]",
     "The water keeps coming out cold. You ease each limb under so they at least get wet.",
     "For a moment, there's another naked body in the bathroom with you. When you cringe away from it, it does the same. Turns out it's yours -- in the mirror.",
     "You wrap yourself in a towel and stand at the sink for a while, staring down the drain.",
 ];
 
 const watchLines = [
-    "You've seen every episode of Married at First Sight there is. You count how many there are and realise how many hours that adds up to.",
+    "You've seen every episode of Married at First Sight there is. You count how many there are and realise how many hours that adds up to.[bg=11 jump]",
     "It'd be too difficult to get into anything you haven't already seen, so you put on the most recent season.",
     "You forgot how actually romantic some of the couples are.",
 ];
 
 const bedLines = [
-    "Thankfully, you're finally drunk enough to feel like you can get to sleep.",
+    "Thankfully, you're finally drunk enough to feel like you can get to sleep.[bg=11other jump]",
+    "[transition]",
 ];
 
 const nextMorningLines = [
-    "You wake up. There's nothing to do.",
-    "...",
-    "[pause]It's dark again. As much as you'd rather not, you do need your phone.",
+    "You wake up. There's nothing to do.[bg=12 jump]",
+    "...[bg=0]",
+    "[pause]It's dark again. As much as you'd rather not, you do need your phone.[bg=13]",
     "You can't afford a new one. They told you not to come into work anymore. It might still be in Carlton Gardens, at that tree you were at.",
     "It's worth checking. What else are you gonna do?",
 ];
 
 const messageHimLines = [
-    "You don't have your phone, yeah, but you can still log in to Instagram on your laptop.",
+    "You don't have your phone, yeah, but you can still log in to Instagram on your laptop.[bg=14 jump]",
     "In your chat with him, the DMs are pretty one-sided, but that's surely only 'cause he's waiting on you to say the right thing.",
     "You type 'I miss you' and send it.",
     "You wait an hour or so, and nothing changes.",
 ];
 
 const goOutLines = [
-    "You get on with it.",
+    "You get on with it.[bg=15 jump]",
+    "[transition]"
 ];
 
 const morningLoopLines = [
     "You're still really tired.",
+    "[transition]",
 ];
 
 const yourNextSceneLines = [
-    "It would've been weird going to the Gardens without more wine. A goon bag, this time, since it's cheaper -- tucked under your arm so cars driving past can't read the packaging as well.",
+    "It would've been weird going to the Gardens without more wine. A goon bag, this time, since it's cheaper -- tucked under your arm so cars driving past can't read the packaging as well.[bg=16 jump]",
     "Once you're in the brush, shadowed, you gulp some of it. Tastes like off fruit.",
     "In the same tree as when you saw him last, the possum waits for you.",
-    "He mustn't be that concerned with anyone else seeing. Not that there's anyone else here.",
+    "He mustn't be that concerned with anyone else seeing. Not that there's anyone else here.[bg=17 jump]",
     "He's got something... yeah, in his hand, he's got your phone.",
-    "[possum]\"You dropped this,\" he tells you.",
+    "[possum]\"You dropped this,\" he tells you.[bg=18 jump]",
     "\"Shit. I fully thought I wasn't gonna find it.\"",
     "...",
     "\"Can I have it back?\"",
@@ -156,9 +159,8 @@ const yourNextSceneLines = [
     "[possum]\"Come closer.\"",
     "He's holding it with the screen towards him. Did he see you putting your password in?",
     "When you look back at him, you notice... his face...",
-    "It looks so much like yours.",
-    "[pause]You turn around and go back the way you came. Or maybe not the exact way, but surely out of Carlton Gardens.",
-    "You still can't see where the grass ends, but you keep going.",
+    "[pause]You turn around and go back the way you came. Or maybe not the exact way, but surely out of Carlton Gardens.[bg=19.0 jump]",
+    "You still can't see where the grass ends, but you keep at it.",
     "[possum]\"Hold on, where are you going?\""
 ];
 
@@ -167,8 +169,8 @@ const reconsiderLines = [
 ];
 
 const ignoreHimLines = [
-    "You press on. Everything's sort of tipping over. Makes the lamps look like they're writing in the darkness, trying to tell you something.",
-    "[possum]\"Don't you want your phone back?\"",
+    "You press on. Everything's sort of tipping over. Makes the lamps look like they're writing in the darkness, trying to tell you something.[bg=19.1 jump]",
+    "[possum]\"Don't you want your phone back?\"[bg=19.2 jump]",
 ];
 
 const goUpToHimLines = [
@@ -221,6 +223,14 @@ const roomLines = [
 const letHimInLines = [
     "...",
 ];
+
+const ignoreBackgroundSets = [
+    ["19.1", "19.2"],
+    ["19.3", "19.4"],
+    ["19.5", "19.6"],
+    ["19.7", "19.8"]
+];
+
 /* =========================
    STATE
 ========================= */
@@ -246,6 +256,8 @@ let showerDone = false;
 let watchDone = false;
 
 let messagedHim = false;
+
+let ignoreLoopCount = 0;
 
 let bedroomChoiceActive = false;
 let morningChoiceActive = false;
@@ -321,6 +333,11 @@ function setBackground(imageUrl, mode = "fade") {
     bgToggle = !bgToggle;
 }
 
+function fadeToBlack() {
+
+    bgA.style.opacity = 0;
+    bgB.style.opacity = 0;
+}
 
 function handleLineFinish() {
 
@@ -373,9 +390,42 @@ function typeLine(text) {
     let isPossumDialogue = text.includes("[possum]");
     text = text.replace("[possum]", "");
 
-const bgMatch = text.match(/\[bg\s*=\s*(\d+)(?:\s+(fade|jump))?\s*\]/i);
+const bgMatch = text.match(/\[bg=([^\]\s]+)(?:\s+(fade|jump))?\]/i);
 
-if (bgMatch) {
+if (text.includes("[transition]")) {
+
+    text = text.replace("[transition]", "");
+
+    fadeToBlack();
+
+    setTimeout(() => {
+
+        typeLine(text);
+
+    }, 2500);
+
+    return;
+}
+
+if (currentScene === 19 && bgMatch) {
+
+    const bgSet =
+        ignoreBackgroundSets[
+            ignoreLoopCount % ignoreBackgroundSets.length
+        ];
+
+    if (bgMatch[1] === "19.1") {
+        setBackground(`images/${bgSet[0]}.jpg`, "jump");
+    }
+
+    else if (bgMatch[1] === "19.2") {
+        setBackground(`images/${bgSet[1]}.jpg`, "jump");
+    }
+
+    text = text.replace(bgMatch[0], "");
+}
+
+else if (bgMatch) {
     const bgNumber = bgMatch[1];
     const mode = (bgMatch[2] || "fade").toLowerCase();
 
@@ -723,17 +773,19 @@ if (finalRoomChoiceActive) {
     return;
 }
     
-    if (ignoreLoopActive) {
+if (ignoreLoopActive) {
 
-        hideEndChoices();
+    ignoreLoopCount = (ignoreLoopCount + 1) % 4;
 
-        currentScene = 19;
-        currentLine = 0;
+    hideEndChoices();
 
-        typeLine(ignoreHimLines[currentLine]);
+    currentScene = 19;
+    currentLine = 0;
 
-        return;
-    }
+    typeLine(ignoreHimLines[currentLine]);
+
+    return;
+}
 
 
     if (endChoiceActive) {
@@ -1070,8 +1122,8 @@ else if (currentScene === 27) {
 
 dialogue.textContent = fullText
     .replace("[possum]", "")
-    .replace(/\[pause\]/g, "");
-
+    .replace(/\[pause\]/g, "")
+    .replace(/\[bg=.*?\]/g, "");
 handleLineFinish();
 
 return;
