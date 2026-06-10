@@ -120,8 +120,8 @@ const bedLines = [
 
 const nextMorningLines = [
     "You wake up. There's nothing to do.[bg=12 jump][music=In-room fade]",
-    "...[bg=0]",
-    "[pause]It's dark again. As much as you'd rather not, you do need your phone.[bg=13]",
+    "...[bg=0][music=none fade]",
+    "[pause]It's dark again. As much as you'd rather not, you do need your phone.[bg=13][music=In-room fade]",
     "You can't afford a new one. They told you not to come into work anymore. It might still be in Carlton Gardens, at that tree you were at.",
     "It's worth checking. What else are you gonna do?",
 ];
@@ -1134,123 +1134,9 @@ dontAnswerChoice.addEventListener("click", () => {
 textbox.addEventListener("click", () => {
 
     if (isTyping) {
+        return;
+    }
 
-        clearTimeout(typingTimeout);
-
-        let fullText = "";
-
-        if (currentScene === 1) {
-            fullText = lines[currentLine];
-        }
-
-        else if (currentScene === 2) {
-            fullText = nextSceneLines[currentLine];
-        }
-
-        else if (currentScene === 3) {
-            fullText = scene3Lines[currentLine];
-        }
-
-        else if (currentScene === 4) {
-            fullText = answerLines[currentLine];
-        }
-
-        else if (currentScene === 5) {
-            fullText = dontAnswerLines[currentLine];
-        }
-
-        else if (currentScene === 6) {
-            fullText = scene4Lines[currentLine];
-        }
-
-        else if (currentScene === 7) {
-            fullText = scene5Lines[currentLine];
-        }
-
-        else if (currentScene === 8) {
-            fullText = showerLines[currentLine];
-        }
-
-        else if (currentScene === 9) {
-            fullText = watchLines[currentLine];
-        }
-
-        else if (currentScene === 10) {
-            fullText = bedLines[currentLine];
-        }
-
-        else if (currentScene === 11) {
-            fullText = nextMorningLines[currentLine];
-        }
-
-        else if (currentScene === 12) {
-            fullText = messageHimLines[currentLine];
-        }
-
-        else if (currentScene === 13) {
-            fullText = goOutLines[currentLine];
-        }
-
-        else if (currentScene === 14) {
-            fullText = morningLoopLines[currentLine];
-        }
-
-        else if (currentScene === 15) {
-            fullText = leftChoiceLines[currentLine];
-        }
-
-        else if (currentScene === 16) {
-            fullText = rightChoiceLines[currentLine];
-        }
-
-        else if (currentScene === 18) {
-            fullText = reconsiderLines[currentLine];
-        }
-
-        else if (currentScene === 19) {
-            fullText = ignoreHimLines[currentLine];
-        }
-
-        else if (currentScene === 20) {
-            fullText = goUpToHimLines[currentLine];
-        }
-
-        else if (currentScene === 21) {
-            fullText = scene21Lines[currentLine];
-        }
-
-        else if (currentScene === 22) {
-            fullText = scene22Lines[currentLine];
-        }
-
-        else if (currentScene === 23) {
-            fullText = scene23Lines[currentLine];
-        }
-
-        else if (currentScene === 24) {
-    fullText = checkPhoneLines[currentLine];
-}
-
-else if (currentScene === 25) {
-    fullText = drinkLines[currentLine];
-}
-
-else if (currentScene === 26) {
-    fullText = roomLines[currentLine];
-}
-
-else if (currentScene === 27) {
-    fullText = letHimInLines[currentLine];
-}
-
-dialogue.textContent = fullText
-    .replace("[possum]", "")
-    .replace(/\[pause\]/g, "")
-    .replace(/\[bg=.*?\]/g, "");
-handleLineFinish();
-
-return;
-}
 
 if (currentScene === 1) {
 
