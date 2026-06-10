@@ -11,6 +11,31 @@ body {
 }
 
 /* =========================
+   BACKGROUNDS
+========================= */
+
+.bg {
+    position: fixed;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+.bg-a {
+    opacity: 1;
+}
+
+.bg-b {
+    opacity: 0;
+}
+
+/* =========================
    TITLE SCREEN
 ========================= */
 
@@ -53,6 +78,8 @@ body {
     opacity: 0;
 
     transition: opacity 2s ease;
+
+    z-index: 2;
 }
 
 .intro-screen.show {
@@ -113,6 +140,8 @@ body {
     opacity: 0;
 
     transition: opacity 0.8s ease;
+
+    z-index: 3;
 }
 
 .textbox.show {
@@ -177,6 +206,8 @@ body {
     height: 100%;
 
     pointer-events: none;
+
+    z-index: 3;
 }
 
 /* =========================
@@ -269,6 +300,8 @@ body {
     transition: opacity 0.4s ease;
 
     cursor: pointer;
+
+    z-index: 3;
 }
 
 .dialogue-choice.show {

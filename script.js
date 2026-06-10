@@ -35,10 +35,10 @@ const lines = [
 ];
 
 const nextSceneLines = [
-    "Carlton Gardens is mostly shadows. There are lamps and stuff, but they only make more shadows. Can't see where the grass ends.",
+    "Carlton Gardens is mostly shadows. There are lamps and stuff, but they only make more shadows. Can't see where the grass ends.[bg=1 jump]",
     "You swing your bottle of wine around as if there's something there to hit. It doesn't really matter if it smashes or anything, 'cause you can always go get more.",
     "\"Look,\" someone says. There's a guy walking on the footpath. Does he think you can't hear him? He points you out to the other guy beside him. Maybe it's his boyfriend. You can't tell.[pause]",
-    "You take a seat against a tree -- like the only one without one of those plastic sheets they use to keep possums off -- and the bottle dinks against the thick roots. You know you shouldn't check your phone, but you've got an empty hand you don't know what else to do with.",
+    "You take a seat against a tree -- like the only one without one of those plastic sheets they use to keep possums off -- and the bottle dinks against the thick roots. You know you shouldn't check your phone, but you've got an empty hand you don't know what else to do with.[bg=2 jump]",
     "You go on... Right, yeah. You deleted Instagram. There was a reason you did that. Can't have been that good.",
     "You redownload it. What're you gonna see on there that's worse than what you've been thinking about? It's only been a couple weeks, anyway. He's not gonna",
     "[possum]\"Hello.\"[pause]",
@@ -46,15 +46,15 @@ const nextSceneLines = [
 ];
 
 const leftChoiceLines = [
-    "..."
+    "...[bg=3 jump]"
 ];
 
 const rightChoiceLines = [
-    "You're second-guessing yourself.",
+    "You're second-guessing yourself.[bg=4 jump]",
 ];
 
 const scene3Lines = [
-    "[possum]\"Hello there.\"",
+    "[possum]\"Hello there.\"[bg=5 jump]",
     "[pause]You don't realise how drunk you are until you try to stand up and can't stay steady, and stumble back against the tree.",
     "You weren't looking where you were going, anyway. You were looking at the thing that must've been watching you since you got here.",
     "[possum]\"How are you going?\"",
@@ -279,6 +279,49 @@ titleScreen.addEventListener("transitionend", () => {
     }
 });
 
+const bgA = document.getElementById("bgA");
+const bgB = document.getElementById("bgB");
+
+let bgToggle = false;
+let activeBg = bgA;
+
+function setBackground(imageUrl, mode = "fade") {
+    const incoming = bgToggle ? bgB : bgA;
+    const outgoing = bgToggle ? bgA : bgB;
+
+    incoming.style.backgroundImage = `url('${imageUrl}')`;
+
+    if (mode === "jump") {
+        incoming.style.transition = "none";
+        incoming.style.opacity = 1;
+        outgoing.style.transition = "none";
+        outgoing.style.opacity = 0;
+
+        activeBg = incoming;
+        bgToggle = !bgToggle;
+        return;
+    }
+
+    // prepare incoming
+    incoming.style.transition = "none";
+    incoming.style.opacity = 0;
+
+    // force browser to apply initial state
+    incoming.offsetHeight;
+
+    incoming.style.transition = "opacity 1.2s ease";
+
+    // IMPORTANT FIX: delay the crossfade to next frame
+    requestAnimationFrame(() => {
+        incoming.style.opacity = 1;
+        outgoing.style.opacity = 0;
+    });
+
+    activeBg = incoming;
+    bgToggle = !bgToggle;
+}
+
+
 function handleLineFinish() {
 
     isTyping = false;
@@ -327,9 +370,19 @@ function typeLine(text) {
 
     clearTimeout(typingTimeout);
 
-let isPossumDialogue = text.includes("[possum]");
+    let isPossumDialogue = text.includes("[possum]");
+    text = text.replace("[possum]", "");
 
-text = text.replace("[possum]", "");
+const bgMatch = text.match(/\[bg\s*=\s*(\d+)(?:\s+(fade|jump))?\s*\]/i);
+
+if (bgMatch) {
+    const bgNumber = bgMatch[1];
+    const mode = (bgMatch[2] || "fade").toLowerCase();
+
+    setBackground(`images/${bgNumber}.jpg`, mode);
+
+    text = text.replace(bgMatch[0], "");
+}
 
     isTyping = true;
 
