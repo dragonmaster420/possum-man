@@ -34,10 +34,10 @@ const lines = [
 ];
 
 const nextSceneLines = [
-    "Carlton Gardens is mostly shadows. There are lamps and stuff, but they only make more shadows. Can't see where the grass ends.[bg=1 jump]",
+    "Carlton Gardens is mostly shadows. There are lamps and stuff, but they only make more shadows. Can't see where the grass ends.[bg=1 jump][music=arrive-atmos]",
     "You swing your bottle of wine around as if there's something there to hit. It doesn't really matter if it smashes or anything, 'cause you can always go get more.",
     "\"Look,\" someone says. There's a guy walking on the footpath. Does he think you can't hear him? He points you out to the other guy beside him. Maybe it's his boyfriend. You can't tell.[pause]",
-    "You take a seat against a tree -- like the only one without one of those plastic sheets they use to keep possums off -- and the bottle dinks against the thick roots. You know you shouldn't check your phone, but you've got an empty hand you don't know what else to do with.[bg=2 jump]",
+    "You take a seat against a tree -- like the only one without one of those plastic sheets they use to keep possums off -- and the bottle dinks against the thick roots. You know you shouldn't check your phone, but you've got an empty hand you don't know what else to do with.[bg=2 jump][music=Gardens-ambience fade]",
     "You go on... Right, yeah. You deleted Instagram. There was a reason you did that. Can't have been that good.",
     "You redownload it. What're you gonna see on there that's worse than what you've been thinking about? It's only been a couple weeks, anyway. He's not gonna",
     "[possum]\"Hello.\"[pause]",
@@ -87,11 +87,11 @@ const scene4Lines = [
     "\"Uh, I dunno. Maybe.\"",
     "The possum nods. He's still nodding as he climbs further up the tree, out of sight.[bg=7 jump]",
     "Carlton Gardens sways, and you almost lose your balance, but you find the path out. Your bottle is drained, now. You drop it into a bin and it clinks against all the others in there.[bg=8 jump]",
-    "[transition]"
+    "[transition][music=none fade]"
 ];
 
 const scene5Lines = [
-    "Your bedsheets aren't put on right. Your pillowcase was starting to tinge yellow, so you took it off.[bg=9 jump]",
+    "Your bedsheets aren't put on right. Your pillowcase was starting to tinge yellow, so you took it off.[bg=9 jump][music=In-room fade]",
     "It's gonna take a while for you to get to sleep, regardless. There are tablets you can take, but you tried one not long ago and it didn't do what it was meant to -- you were still awake except you couldn't move.",
     "It'd be too expensive to get the type of thing you need. You'll look up what else you can do to...",
     "Fuck.",
@@ -101,25 +101,25 @@ const scene5Lines = [
 ];
 
 const showerLines = [
-    "It's been ages since you had a shower. That only occurs to you 'cause mould's started growing in the corners and in the grit.[bg=10 jump]",
+    "It's been ages since you had a shower. That only occurs to you 'cause mould's started growing in the corners and in the grit.[bg=10 jump][music=Shower fade]",
     "The water keeps coming out cold. You ease each limb under so they at least get wet.",
     "For a moment, there's another naked body in the bathroom with you. When you cringe away from it, it does the same. Turns out it's yours -- in the mirror.",
     "You wrap yourself in a towel and stand at the sink for a while, staring down the drain.",
 ];
 
 const watchLines = [
-    "You've seen every episode of Married at First Sight there is. You count how many there are and realise how many hours that adds up to.[bg=11 jump]",
+    "You've seen every episode of Married at First Sight there is. You count how many there are and realise how many hours that adds up to.[bg=11 jump][music=MAFS fade]",
     "It'd be too difficult to get into anything you haven't already seen, so you put on the most recent season.",
     "You forgot how actually romantic some of the couples are.",
 ];
 
 const bedLines = [
-    "Thankfully, you're finally drunk enough to feel like you can get to sleep.[bg=11other jump]",
-    "[transition]",
+    "Thankfully, you're finally drunk enough to feel like you can get to sleep.[bg=11other jump][music=In-room fade]",
+    "[transition][music=none fade]",
 ];
 
 const nextMorningLines = [
-    "You wake up. There's nothing to do.[bg=12 jump]",
+    "You wake up. There's nothing to do.[bg=12 jump][music=In-room fade]",
     "...[bg=0]",
     "[pause]It's dark again. As much as you'd rather not, you do need your phone.[bg=13]",
     "You can't afford a new one. They told you not to come into work anymore. It might still be in Carlton Gardens, at that tree you were at.",
@@ -135,19 +135,19 @@ const messageHimLines = [
 
 const goOutLines = [
     "You get on with it.[bg=15 jump]",
-    "[transition]"
+    "[transition][music=none fade]"
 ];
 
 const morningLoopLines = [
     "You're still really tired.",
-    "[transition]",
+    "[transition][music=none fade]",
 ];
 
 const yourNextSceneLines = [
-    "It would've been weird going to the Gardens without more wine. A goon bag, this time, since it's cheaper -- tucked under your arm so cars driving past can't read the packaging as well.[bg=16 jump]",
+    "It would've been weird going to the Gardens without more wine. A goon bag, this time, since it's cheaper -- tucked under your arm so cars driving past can't read the packaging as well.[bg=16 jump][music=Return-to-gardens fade]",
     "Once you're in the brush, shadowed, you gulp some of it. Tastes like off fruit.",
     "In the same tree as when you saw him last, the possum waits for you.",
-    "He mustn't be that concerned with anyone else seeing. Not that there's anyone else here.[bg=17 jump]",
+    "He mustn't be that concerned with anyone else seeing. Not that there's anyone else here.[bg=17 jump][music=Gardens-ambience-2 fade]",
     "He's got something... yeah, in his hand, he's got your phone.",
     "[possum]\"You dropped this,\" he tells you.[bg=18 jump]",
     "\"Shit. I fully thought I wasn't gonna find it.\"",
@@ -159,23 +159,24 @@ const yourNextSceneLines = [
     "[possum]\"Come closer.\"",
     "He's holding it with the screen towards him. Did he see you putting your password in?",
     "When you look back at him, you notice... his face...",
-    "[pause]You turn around and go back the way you came. Or maybe not the exact way, but surely out of Carlton Gardens.[bg=19.0 jump]",
+    "[pause]You turn around and go back the way you came. Or maybe not the exact way, but surely out of Carlton Gardens.[bg=19.0 jump][music=Getting-away]",
     "You still can't see where the grass ends, but you keep at it.",
     "[possum]\"Hold on, where are you going?\""
 ];
 
 const reconsiderLines = [
     "Wait... well... you do need your phone. You go up to the possum.",
+    "[transition]"
 ];
 
 const ignoreHimLines = [
-    "You press on. Everything's sort of tipping over. Makes the lamps look like they're writing in the darkness, trying to tell you something.[bg=19.1 jump]",
-    "[possum]\"Don't you want your phone back?\"[bg=19.2 jump]",
+    "You press on. Everything's sort of tipping over. Makes the lamps look like they're writing in the darkness, trying to tell you something.[bg=19.1 jump][music=Getting-away]",
+    "[possum]\"Don't you want your phone back?\"[bg=19.2 jump][music=Gardens-ambience-2]",
 ];
 
 const goUpToHimLines = [
     "You go up to the possum.",
-    "[transition]"
+    "[transition][music=Gardens-ambience-2 fade]"
 ];
 
 const scene21Lines = [
@@ -184,11 +185,11 @@ const scene21Lines = [
     "[possum]\"Everything will be alright. I understand that you aren't doing well, but you don't have to feel like that.\"",
     "...",
     "[possum]\"You are so beautiful. It's not your fault that there are too many people who can't see that. It's only you now -- you and me. You are so, so beautiful. You don't have to listen to anyone else. You are so beautiful and perfect.\"",
-    "[transition]"
+    "[transition][music=none fade]"
 ];
 
 const scene22Lines = [
-    "[pause]You're on the train.[bg=21 jump]",
+    "[pause]You're on the train.[bg=21 jump][music=On-train]",
     "[pause]You don't remember getting on.",
     "...",
     "That possum man's alright, isn't he?",
@@ -196,12 +197,12 @@ const scene22Lines = [
     "[pause]Is that...?",
     "You thought you might've seen something out the window.",
     "The trip home always goes faster after you've had a few.",
-    "[transition]",
+    "[transition][music=none fade]",
 
 ];
 
 const scene23Lines = [
-    "Your house seems bigger than usual. Are they gonna up the rent for that?[bg=22 jump]",
+    "Your house seems bigger than usual. Are they gonna up the rent for that?[bg=22 jump][music=Kitchen fade]",
     "Hahahahahahahahahahahahahahaha.",
     "Whatever.",
 ];
@@ -218,7 +219,7 @@ const drinkLines = [
 ];
 
 const roomLines = [
-    "[pause][possum]\"Hello again.\"[bg=26 jump]",
+    "[pause][possum]\"Hello again.\"[bg=26 jump][music=In-room]",
     "[pause][possum]\"You have such a lovely room. And your bed looks so comfortable.\"",
     "[pause][possum]\"I really think you need me here tonight.\"",
 ];
@@ -240,6 +241,8 @@ const ignoreBackgroundSets = [
 
 let finalRoomChoiceActive = false;
 let possumRoomChoiceActive = false;
+
+let currentMusic = null;
 
 let checkedPhone = false;
 let lookedForDrink = false;
@@ -336,6 +339,110 @@ function setBackground(imageUrl, mode = "fade") {
     bgToggle = !bgToggle;
 }
 
+function setMusic(trackName, mode = "jump") {
+
+    if (trackName === "none") {
+
+        if (currentMusic) {
+
+            if (mode === "fade") {
+
+                let volume = currentMusic.volume;
+
+                const fadeOut = setInterval(() => {
+
+                    volume -= 0.05;
+
+                    if (volume <= 0) {
+
+                        currentMusic.pause();
+                        currentMusic.currentTime = 0;
+
+                        clearInterval(fadeOut);
+
+                        currentMusic = null;
+
+                    } else {
+
+                        currentMusic.volume = volume;
+                    }
+
+                }, 100);
+            }
+
+            else {
+
+                currentMusic.pause();
+                currentMusic.currentTime = 0;
+                currentMusic = null;
+            }
+        }
+
+        return;
+    }
+
+    const newMusic = new Audio(`audio/${trackName}.m4a`);
+    newMusic.loop = true;
+
+    if (!currentMusic) {
+
+        newMusic.volume = 1;
+        newMusic.play();
+
+        currentMusic = newMusic;
+
+        return;
+    }
+
+    if (mode === "fade") {
+
+        newMusic.volume = 0;
+        newMusic.play();
+
+        const fadeInterval = setInterval(() => {
+
+            if (currentMusic) {
+    currentMusic.volume = Math.max(
+        0,
+        currentMusic.volume - 0.05
+    );
+}
+
+newMusic.volume = Math.min(
+    1,
+    newMusic.volume + 0.05
+);
+
+            if (
+                !currentMusic ||
+                currentMusic.volume <= 0
+            ) {
+
+                if (currentMusic) {
+                    currentMusic.pause();
+                }
+
+                newMusic.volume = 1;
+
+                clearInterval(fadeInterval);
+
+                currentMusic = newMusic;
+            }
+
+        }, 100);
+    }
+
+    else {
+
+        currentMusic.pause();
+
+        newMusic.volume = 1;
+        newMusic.play();
+
+        currentMusic = newMusic;
+    }
+}
+
 function fadeToBlack() {
 
     bgA.style.opacity = 0;
@@ -394,6 +501,19 @@ function typeLine(text) {
     text = text.replace("[possum]", "");
 
 const bgMatch = text.match(/\[bg=([^\]\s]+)(?:\s+(fade|jump))?\]/i);
+
+const musicMatch =
+    text.match(/\[music=([^\]\s]+)(?:\s+(fade|jump))?\]/i);
+
+if (musicMatch) {
+
+    const trackName = musicMatch[1];
+    const mode = (musicMatch[2] || "jump").toLowerCase();
+
+    setMusic(trackName, mode);
+
+    text = text.replace(musicMatch[0], "");
+}
 
 if (text.includes("[transition]")) {
 
