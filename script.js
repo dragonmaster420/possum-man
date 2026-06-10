@@ -175,18 +175,20 @@ const ignoreHimLines = [
 
 const goUpToHimLines = [
     "You go up to the possum.",
+    "[transition]"
 ];
 
 const scene21Lines = [
-    "[pause]...",
+    "[pause]...[bg=20 jump]",
     "[possum]\"Before I return this to you, you must know...\"",
     "[possum]\"Everything will be alright. I understand that you aren't doing well, but you don't have to feel like that.\"",
     "...",
     "[possum]\"You are so beautiful. It's not your fault that there are too many people who can't see that. It's only you now -- you and me. You are so, so beautiful. You don't have to listen to anyone else. You are so beautiful and perfect.\"",
+    "[transition]"
 ];
 
 const scene22Lines = [
-    "[pause]You're on the train.",
+    "[pause]You're on the train.[bg=21 jump]",
     "[pause]You don't remember getting on.",
     "...",
     "That possum man's alright, isn't he?",
@@ -194,34 +196,35 @@ const scene22Lines = [
     "[pause]Is that...?",
     "You thought you might've seen something out the window.",
     "The trip home always goes faster after you've had a few.",
+    "[transition]",
 
 ];
 
 const scene23Lines = [
-    "Your house seems bigger than usual. Are they gonna up the rent for that?",
+    "Your house seems bigger than usual. Are they gonna up the rent for that?[bg=22 jump]",
     "Hahahahahahahahahahahahahahaha.",
     "Whatever.",
 ];
 
 const checkPhoneLines = [
-    "As soon as you open Instagram, there it is:",
+    "As soon as you open Instagram, there it is:[bg=23 jump]",
     "He's with another guy. You don't blame him -- he's pretty hot.",
     "Hahahahahahahahahahahahahahahahahahahahahahahahahahahaha.",
 ];
 
 const drinkLines = [
-    "The fridge is basically empty. You go through all the cupboards and drawers.",
-    "[pause]...",
+    "The fridge is basically empty. You go through all the cupboards and drawers.[bg=24 jump]",
+    "[pause]...[bg=25 jump]",
 ];
 
 const roomLines = [
-    "[pause][possum]\"Hello again.\"",
+    "[pause][possum]\"Hello again.\"[bg=26 jump]",
     "[pause][possum]\"You have such a lovely room. And your bed looks so comfortable.\"",
     "[pause][possum]\"I really think you need me here tonight.\"",
 ];
 
 const letHimInLines = [
-    "...",
+    "...[bg=27 jump]",
 ];
 
 const ignoreBackgroundSets = [
